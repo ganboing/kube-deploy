@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+export USE_CNI=true
+
 # Source common.sh
 source $(dirname "${BASH_SOURCE}")/common.sh
 
@@ -32,7 +34,6 @@ kube::multinode::turndown
 if [[ ${USE_CNI} == "true" ]]; then
   kube::cni::ensure_docker_settings
 
-  kube::multinode::start_flannel
 else
   kube::bootstrap::bootstrap_daemon
 
